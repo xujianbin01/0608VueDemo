@@ -26,7 +26,36 @@
 <script>
 export default {
   name: '',
-}
+  data(){
+    return{
+      username:"",
+      content:""
+    }
+  },
+  props:["addComment"],
+  methods:{
+    addC(){
+       let {username,content}=this;
+       if(username.trim()&&content.trim()){
+         let id=Date.now();
+         let obj={
+           id,
+           username,
+           content
+         }
+      //把数据给添加到comments数组当中
+      //数据在哪里，操作数据的方法就要定义在哪里，哪里需要操作数据，我们是把操作数据的方法传过来，让其调用
+      //在这里我们把App当中操作添加评论的方法addComment传递给Add这个组件去调用添加评论
+      this.addComment(obj)
+       }
+       else{
+         alert('请输入合法内容')
+       }
+       this.username=""
+       this.content=""
+    }
+  }
+};
 </script>
 
 <style scoped>

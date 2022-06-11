@@ -1,16 +1,24 @@
 <template>
     <li class="list-group-item">
       <div class="handle">
-          <a href="javascript:;">删除</a>
+          <a href="javascript:;" @click="deleteC">删除</a>
       </div>
-      <p class="user"><span >xxx</span><span>说:</span></p>
-      <p class="centence">React不错!</p>
+      <p class="user"><span >{{comment.username}}</span><span>说:</span></p>
+      <p class="centence">{{comment.content}}</p>
     </li>
 </template>
 
 <script>
 export default {
   name: '',
+  props:['comment','index',"deleteComment"],
+  methods:{
+    deleteC(){
+      if(confirm('确定要删除？')){
+        this.deleteComment(this.index);
+      }
+    },
+  }
 }
 </script>
 

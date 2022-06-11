@@ -3,7 +3,13 @@
         <h3 class="reply">评论回复：</h3>
         <h2 style='display: none'>暂无评论，点击左侧添加评论！！！</h2>
         <ul class="list-group">
-         <Item></Item>
+        <Item
+        v-for="(comment, index) in coms"
+        :key="comment.id"
+        :comment="comment"
+        :index="index"
+        :deleteComment="deleteComment"
+      ></Item>
         </ul>
       </div>
 </template>
@@ -15,7 +21,8 @@ export default {
    components: {
     Item,
   },
-}
+  props:["coms","deleteComment"],//声明接收属性
+};
 </script>
 
 <style scoped>
